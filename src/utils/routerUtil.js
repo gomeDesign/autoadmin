@@ -52,6 +52,7 @@ function parseRoutes(routesConfig, routerMap) {
       meta: {
         authority: routeCfg.authority || router.authority || routeCfg.meta?.authority || router.meta?.authority || '*',
         icon: routeCfg.icon || router.icon ||  routeCfg.meta?.icon || router.meta?.icon,
+        style: routeCfg.style || router.style ||  routeCfg.meta?.style || router.meta?.style,
         page: routeCfg.page || router.page ||  routeCfg.meta?.page || router.meta?.page,
         link: routeCfg.link || router.link ||  routeCfg.meta?.link || router.meta?.link
       }
@@ -190,6 +191,7 @@ function formatAuthority(routes, pAuthorities = []) {
     const meta = route.meta
     const defaultAuthority = pAuthorities[pAuthorities.length - 1] || {permission: '*'}
     if (meta) {
+      console.log(route,'-----------------')
       let authority = {}
       if (!meta.authority) {
         authority = defaultAuthority
@@ -206,6 +208,12 @@ function formatAuthority(routes, pAuthorities = []) {
         }
       }
       meta.authority = authority
+      route.meta = {
+        icon: meta.icon || route.icon ||  meta.meta?.icon || route.meta?.icon,
+        style: meta.style || route.style ||  meta.meta?.style || route.meta?.style,
+        page: meta.page || route.page ||  meta.meta?.page || route.meta?.page,
+        link: meta.link || route.link ||  meta.meta?.link || route.meta?.link
+      }
     } else {
       const authority = defaultAuthority
       route.meta = {authority}

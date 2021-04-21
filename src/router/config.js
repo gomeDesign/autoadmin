@@ -30,7 +30,8 @@ const options = {
           path: 'dashboard',
           name: 'Dashboard',
           meta: {
-            icon: 'dashboard'
+            icon: 'dashboard',
+            style:'color:#399CFF',
           },
           component: BlankView,
           children: [
@@ -55,7 +56,8 @@ const options = {
           path: 'form',
           name: '表单页',
           meta: {
-            icon: 'form',
+            icon:'container',
+            style:'color:#A17EFF',
             page: {
               cacheAble: false
             }
@@ -83,7 +85,8 @@ const options = {
           path: 'list',
           name: '列表页',
           meta: {
-            icon: 'table'
+            icon: 'profile',
+            style:'color:#3EBFC4',
           },
           component: PageView,
           children: [
@@ -133,7 +136,8 @@ const options = {
           path: 'details',
           name: '详情页',
           meta: {
-            icon: 'profile'
+            icon: 'read',
+            style:'color:#409EFF',
           },
           component: BlankView,
           children: [

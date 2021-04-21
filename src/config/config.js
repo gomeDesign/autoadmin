@@ -8,7 +8,7 @@ module.exports = {
         warning: '#faad14', //警告色
         error: '#f5222f', //错误色
     },
-    layout: 'mix', //导航布局设置，可选 side:侧边导航,head:顶部导航,mix:顶部一级导航，侧边一级级以下菜单导航
+    layout: 'side', //导航布局设置，可选 side:侧边导航,head:顶部导航,mix:顶部一级导航，侧边一级级以下菜单导航
     fixedHeader: true, //固定头部状态栏，true:固定，false:不固定
     fixedSideBar: true, //固定侧边栏，true:固定，false:不固定
     fixedTabs: true, //固定页签头，true:固定，false:不固定

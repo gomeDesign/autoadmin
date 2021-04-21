@@ -119,7 +119,7 @@ export default {
     }
   },
   methods: {
-    renderIcon: function (h, icon, key) {
+    renderIcon: function (h, icon,theme,style, key) {
       if (this.$scopedSlots.icon && icon && icon !== 'none') {
         const vnodes = this.$scopedSlots.icon({icon, key})
         vnodes.forEach(vnode => {
@@ -128,7 +128,16 @@ export default {
         })
         return vnodes
       }
-      return !icon || icon == 'none' ? null : h(Icon, {props: {type:  icon}})
+      let config = { 
+        props: {
+          type: icon, 
+          theme,
+        },
+        attrs:{
+          style
+        } 
+      }
+      return !icon || icon == 'none' ? null : h(Icon,config )
     },
     renderMenuItem: function (h, menu) {
       let tag = 'router-link'
@@ -142,7 +151,11 @@ export default {
         [
           h(tag, config,
             [
-              this.renderIcon(h, menu.meta ? menu.meta.icon : 'none', menu.fullPath),
+              this.renderIcon(h, 
+                menu.meta ? menu.meta.icon : 'none',
+                menu.meta && menu.meta.theme ? menu.meta.theme : 'filled',
+                menu.meta && menu.meta.style ? menu.meta.style : '',
+                menu.fullPath),
               this.$t(getI18nKey(menu.fullPath))
             ]
           )
@@ -153,7 +166,11 @@ export default {
       let this_ = this
       let subItem = [h('span', {slot: 'title', attrs: {style: 'overflow:hidden;white-space:normal;text-overflow:clip;'}},
         [
-          this.renderIcon(h, menu.meta ? menu.meta.icon : 'none', menu.fullPath),
+          this.renderIcon(h, 
+            menu.meta ? menu.meta.icon : 'none',
+            menu.meta && menu.meta.theme ? menu.meta.theme : 'filled',
+            menu.meta && menu.meta.style ? menu.meta.style : '',
+            menu.fullPath),
           this.$t(getI18nKey(menu.fullPath))
         ]
       )]
