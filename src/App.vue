@@ -66,12 +66,8 @@ export default {
         case 'CN':
           this.locale = require('ant-design-vue/es/locale-provider/zh_CN').default
           break
-        case 'HK':
-          this.locale = require('ant-design-vue/es/locale-provider/zh_TW').default
-          break
-        case 'US':
         default:
-          this.locale = require('ant-design-vue/es/locale-provider/en_US').default
+          this.locale = require('ant-design-vue/es/locale-provider/zh_CN').default
           break
       }
     },
@@ -88,6 +84,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  #id{
-  }
 </style>

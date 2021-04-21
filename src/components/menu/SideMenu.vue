@@ -1,11 +1,5 @@
 <template>
-  <a-layout-sider :theme="sideTheme" :class="['side-menu', 'beauty-scroll', isMobile ? null : 'shadow']" width="256px" :collapsible="collapsible" v-model="collapsed" :trigger="null">
-    <div :class="['logo', theme]">
-      <router-link to="/dashboard/workplace">
-        <img src="@/assets/img/logo.png">
-        <h1>{{systemName}}</h1>
-      </router-link>
-    </div>
+  <a-layout-sider :theme="sideTheme" :class="['side-menu', 'beauty-scroll', isMobile ? null : 'shadow']" width="220px" :collapsible="collapsible" collapsed-width="48" v-model="collapsed" :trigger="null">
     <i-menu :theme="theme" :collapsed="collapsed" :options="menuData" @select="onSelect" class="menu"/>
   </a-layout-sider>
 </template>
@@ -51,6 +45,6 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "index";
 </style>

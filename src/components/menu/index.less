@@ -1,10 +1,10 @@
 .shadow{
-  box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+  box-shadow: 2px 0 8px 0 rgba(29,35,41,.05);
 }
 .side-menu{
+  margin-top: 64px;
   min-height: 100vh;
   overflow-y: auto;
-  z-index: 10;
   .logo{
     height: 64px;
     position: relative;
@@ -35,4 +35,20 @@
 }
 .menu{
   padding: 16px 0;
+}
+.admin-layout-main .ant-layout-sider-collapsed {
+  .ant-menu-item {
+    padding: 0 16px !important;
+  }
+}
+.admin-layout-main .ant-layout-sider-collapsed .ant-menu-inline-collapsed {
+  width: 48px;
+  .ant-menu-submenu{
+    .ant-menu-submenu-title {
+      padding: 0 16px !important;
+    }
+  }
+}
+.ant-menu-inline, .ant-menu-vertical, .ant-menu-vertical-left{
+  border-right:none;
 }

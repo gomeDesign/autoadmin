@@ -4,33 +4,40 @@ const ThemeColorReplacer = require('webpack-theme-color-replacer')
 const {getThemeColors, modifyVars} = require('./src/utils/themeUtil')
 const {resolveCss} = require('./src/utils/theme-color-replacer-extend')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 
 const productionGzipExtensions = ['js', 'css']
 const isProd = process.env.NODE_ENV === 'production'
+
 
 const assetsCDN = {
   // webpack build externals
   externals: {
     vue: 'Vue',
     'vue-router': 'VueRouter',
+    'moment': 'moment',
     vuex: 'Vuex',
     axios: 'axios',
     nprogress: 'NProgress',
     clipboard: 'ClipboardJS',
     '@antv/data-set': 'DataSet',
-    'js-cookie': 'Cookies'
+    'js-cookie': 'Cookies',
+    'vuedraggable': 'vuedraggable',
   },
-  css: [
-  ],
+  css: [],
   js: [
-    '//cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js',
-    '//cdn.jsdelivr.net/npm/vue-router@3.3.4/dist/vue-router.min.js',
-    '//cdn.jsdelivr.net/npm/vuex@3.4.0/dist/vuex.min.js',
-    '//cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js',
-    '//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js',
-    '//cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js',
-    '//cdn.jsdelivr.net/npm/@antv/data-set@0.11.4/build/data-set.min.js',
-    '//cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js'
+    '/static/plugin/vue-router/3.4.6/vue-router.min.js',
+    '/static/plugin/vue/2.6.12/vue.min.js',
+    '/static/plugin/moment/moment.min.js',
+    '/static/plugin/moment/zh-cn.js',
+    '/static/plugin/vuex/3.5.1/vuex.min.js',
+    '/static/plugin/axios/0.19.2/axios.min.js',
+    '/static/plugin/nprogress/3.4.4/nprogress.min.js',
+    '/static/plugin/clipboard/2.0.6/clipboard.min.js',
+    '/static/plugin/data-set/3.14.1/data-set.min.js',
+    '/static/plugin/js-cookie/3.14.1/js.cookie.min.js',
+    '/static/plugin/sortable/1.10.2/Sortable.min.js',
+    '/static/plugin/vuedraggable/2.24.3/vuedraggable.umd.min.js'
   ]
 }
 
@@ -66,6 +73,25 @@ module.exports = {
         resolveCss
       })
     )
+    config.optimization = {
+      minimizer: [
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            // 删除注释
+            output: {
+              comments: false
+            },
+            // 删除console debugger 删除警告
+            compress: {
+              // warnings: false,
+              drop_console: true, //console
+              drop_debugger: false,
+              pure_funcs: ["console.log"] //移除console
+            }
+          }
+        })
+      ]
+    }
     // Ignore all locale files of moment.js
     config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/))
     // 生产环境下将资源压缩成gzip格式
@@ -114,5 +140,6 @@ module.exports = {
   publicPath: process.env.VUE_APP_PUBLIC_PATH,
   outputDir: 'dist',
   assetsDir: 'static',
-  productionSourceMap: false
+  productionSourceMap: false,
+  filenameHashing: true,
 }

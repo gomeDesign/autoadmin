@@ -38,14 +38,7 @@
           lock: '点击锁定页签头',
           unlock: '点击解除锁定',
         },
-        HK: {
-          lock: '點擊鎖定頁簽頭',
-          unlock: '點擊解除鎖定',
-        },
-        US: {
-          lock: 'click to lock the tabs head',
-          unlock: 'click to unlock',
-        }
+
       }
     },
     props: {
@@ -159,13 +152,13 @@
       padding: 8px 24px 0;
       position: fixed;
       height: 48px;
-      z-index: 1;
+      z-index: 2;
       background-color: @layout-body-background;
       &.side,&.mix{
         right: 0;
-        left: 256px;
+        left: 220px;
         &.collapsed{
-          left: 80px;
+          left: 48px;
         }
       }
       &.head{

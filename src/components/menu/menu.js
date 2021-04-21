@@ -191,6 +191,7 @@ export default {
       return menuArr
     },
     formatOptions(options, parentPath) {
+      if (!options || options.length==0) return;
       options.forEach(route => {
         let isFullPath = route.path.substring(0, 1) == '/'
         route.fullPath = isFullPath ? route.path : parentPath + '/' + route.path

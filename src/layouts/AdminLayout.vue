@@ -1,28 +1,30 @@
 <template>
   <a-layout :class="['admin-layout', 'beauty-scroll']">
-    <drawer v-if="isMobile" v-model="drawerOpen">
-      <side-menu :theme="theme.mode" :menuData="menuData" :collapsed="false" :collapsible="false" @menuSelect="onMenuSelect"/>
-    </drawer>
-    <side-menu :class="[fixedSideBar ? 'fixed-side' : '']" :theme="theme.mode" v-else-if="layout === 'side' || layout === 'mix'" :menuData="sideMenuData" :collapsed="collapsed" :collapsible="true" />
-    <div v-if="fixedSideBar && !isMobile" :style="`width: ${sideMenuWidth}; min-width: ${sideMenuWidth};max-width: ${sideMenuWidth};`" class="virtual-side"></div>
+    <admin-header :class="[{'fixed-tabs': fixedTabs, 'fixed-header': fixedHeader, 'multi-page': multiPage}]" :style="headerStyle" :menuData="headMenuData" :collapsed="collapsed" @toggleCollapse="toggleCollapse"/>
+    <a-layout-header :class="['virtual-header', {'fixed-tabs' : fixedTabs, 'fixed-header': fixedHeader, 'multi-page': multiPage}]" v-show="fixedHeader"></a-layout-header>
     <drawer v-if="!hideSetting" v-model="showSetting" placement="right">
       <div class="setting" slot="handler">
         <a-icon :type="showSetting ? 'close' : 'setting'"/>
       </div>
       <setting />
     </drawer>
-    <a-layout class="admin-layout-main beauty-scroll">
-      <admin-header :class="[{'fixed-tabs': fixedTabs, 'fixed-header': fixedHeader, 'multi-page': multiPage}]" :style="headerStyle" :menuData="headMenuData" :collapsed="collapsed" @toggleCollapse="toggleCollapse"/>
-      <a-layout-header :class="['virtual-header', {'fixed-tabs' : fixedTabs, 'fixed-header': fixedHeader, 'multi-page': multiPage}]" v-show="fixedHeader"></a-layout-header>
+    <a-layout class="admin-layout-main beauty-scroll draw-style">
+      <drawer v-if="isMobile" v-model="drawerOpen">
+        <side-menu :theme="theme.mode" :menuData="menuData" :collapsed="false" :collapsible="false" @menuSelect="onMenuSelect"/>
+      </drawer>
+      <side-menu :class="[fixedSideBar ? 'fixed-side' : '']" :theme="theme.mode" v-else-if="layout === 'side' || layout === 'mix'" :menuData="sideMenuData" :collapsed="collapsed" :collapsible="true" />
+      <div v-if="fixedSideBar && !isMobile" :style="`width: ${sideMenuWidth}; min-width: ${sideMenuWidth};max-width: ${sideMenuWidth};`" class="virtual-side"></div>
+      <div v-if="layout !== 'head'" :class="collapsed ? 'ctrigger':'trigger'" @click="toggleCollapse"></div>
       <a-layout-content class="admin-layout-content" :style="`min-height: ${minHeight}px;`">
         <div style="position: relative">
           <slot></slot>
         </div>
       </a-layout-content>
-      <a-layout-footer style="padding: 0px">
-        <page-footer :link-list="footerLinks" :copyright="copyright" />
-      </a-layout-footer>
+     
     </a-layout>
+    <a-layout-footer style="padding: 0px">
+      <page-footer :link-list="footerLinks" :copyright="copyright" />
+    </a-layout-footer>
   </a-layout>
 </template>
 
@@ -70,10 +72,11 @@ export default {
       'fixedTabs', 'hideSetting', 'multiPage']),
     ...mapGetters('setting', ['firstMenu', 'subMenu', 'menuData']),
     sideMenuWidth() {
-      return this.collapsed ? '80px' : '256px'
+      return this.collapsed ? '48px' : '220px'
     },
     headerStyle() {
-      let width = (this.fixedHeader && this.layout !== 'head' && !this.isMobile) ? `calc(100% - ${this.sideMenuWidth})` : '100%'
+      // let width = (this.fixedHeader && this.layout !== 'head' && !this.isMobile) ? `calc(100% - ${this.sideMenuWidth})` : '100%'
+      let width = (this.fixedHeader && this.layout !== 'head' && !this.isMobile) ? `calc(100%)` : '100%'
       let position = this.fixedHeader ? 'fixed' : 'static'
       return `width: ${width}; position: ${position};`
     },
@@ -131,6 +134,32 @@ export default {
     .virtual-side{
       transition: all 0.2s;
     }
+    .trigger{
+      background-image: url(../assets/img/menu_close.png);
+      background-repeat: no-repeat;
+      background-position-x: center;
+      background-size: 100%;
+      width: 16px;
+      height: 41px;;
+      cursor: pointer;
+      transition: color .3s;
+      position: fixed;
+      top: 50%;
+      left: 220px;
+    }
+    .ctrigger{
+      background-image: url(../assets/img/menu_open.png);
+      background-repeat: no-repeat;
+      background-position-x: center;
+      background-size: 100%;
+      width: 16px;
+      height: 41px;;
+      cursor: pointer;
+      transition: color .3s;
+      position: fixed;
+      top: 50%;
+      left: 48px;
+    }
     .virtual-header{
       transition: all 0.2s;
       opacity: 0;
@@ -151,6 +180,7 @@ export default {
     }
     .admin-layout-content{
       padding: 24px 24px 0;
+      background: #f4f4fc;
       /*overflow-x: hidden;*/
       /*min-height: calc(100vh - 64px - 122px);*/
     }

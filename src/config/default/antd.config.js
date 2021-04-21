@@ -1,15 +1,15 @@
 // antd 配置
 const ANTD = {
   primary: {
-    color: '#1890ff',
+    color: '#409eff',
     warning: '#faad14',
     success: '#52c41a',
     error: '#f5222d',
     light: {
-      menuColors: ['#000c17', '#001529', '#002140']
+      menuColors: ['#000c17', '#409eff', '#002140']
     },
     dark: {
-      menuColors: ['#000c17', '#001529', '#002140']
+      menuColors: ['#000c17', '#409eff', '#002140']
     },
     night: {
       menuColors: ['#151515', '#1f1f1f', '#1e1e1e'],
@@ -21,6 +21,7 @@ const ANTD = {
       'body-background': '#fff',
       'component-background': '#fff',
       'heading-color': 'rgba(0, 0, 0, 0.85)',
+      'currency-color': "#409EFF",
       'text-color': 'rgba(0, 0, 0, 0.65)',
       'text-color-inverse': '#fff',
       'text-color-secondary': 'rgba(0, 0, 0, 0.45)',
@@ -42,6 +43,7 @@ const ANTD = {
       'body-background': '#fff',
       'component-background': '#fff',
       'heading-color': 'rgba(0, 0, 0, 0.85)',
+      'currency-color': "#409EFF",
       'text-color': 'rgba(0, 0, 0, 0.65)',
       'text-color-inverse': '#fff',
       'text-color-secondary': 'rgba(0, 0, 0, 0.45)',
@@ -63,6 +65,7 @@ const ANTD = {
       'body-background': '#141414',
       'component-background': '#141414',
       'heading-color': 'rgba(255, 255, 255, 0.85)',
+      'currency-color': "#409EFF",
       'text-color': 'rgba(255, 255, 255, 0.85)',
       'text-color-inverse': '#141414',
       'text-color-secondary': 'rgba(255, 255, 255, 0.45)',
