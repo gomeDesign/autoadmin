@@ -107,7 +107,7 @@ const options = {
 启动服务，你将看到新增页面如下：
 ![newPage](../assets/new-page.png)
 如果你想把它配置为二级页面或更深层级的页面，只需为它配置一个父级路由，并为父级路由配置一个[视图组件](./layout.md#admin-的视图)，
-这里我们选择 [PageView](https://github.com/iczer/vue-antd-admin/blob/master/src/layouts/PageView.vue)，如下：
+这里我们选择 [PageView](https://github.com/gomeDesign/autoadmin/blob/master/src/layouts/PageView.vue)，如下：
 ```js {10-21}
 const options = {
   routes: [
@@ -139,9 +139,9 @@ const options = {
 ```
 :::warning
 页面所有父级路由的组件必须配置为[视图组件](../develop/layout.md#admin-的视图)，否则页面的内容可能不会显示。  
-目前有 [PageView](https://github.com/iczer/vue-antd-admin/blob/master/src/layouts/PageView.vue)、
-[TabsView](https://github.com/iczer/vue-antd-admin/blob/master/src/layouts/tabs/TabsView.vue) 和
-[BlankView](https://github.com/iczer/vue-antd-admin/blob/master/src/layouts/BlankView.vue) 可选，
+目前有 [PageView](https://github.com/gomeDesign/autoadmin/blob/master/src/layouts/PageView.vue)、
+[TabsView](https://github.com/gomeDesign/autoadmin/blob/master/src/layouts/tabs/TabsView.vue) 和
+[BlankView](https://github.com/gomeDesign/autoadmin/blob/master/src/layouts/BlankView.vue) 可选，
 你也可以自己创建视图组件。（[什么是视图组件？](../develop/layout.md#admin-的视图)）
 :::
 页面如下：

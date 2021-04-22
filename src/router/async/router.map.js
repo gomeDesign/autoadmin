@@ -19,7 +19,7 @@ const routerMap = {
     component: view.tabs
   },
   dashboard: {
-    name: 'Dashboard',
+    name: '仪表盘',
     component: view.blank
   },
   workplace: {

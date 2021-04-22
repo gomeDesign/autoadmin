@@ -157,7 +157,7 @@ const options = {
           path: 'result',
           name: '结果页',
           meta: {
-            icon: 'check-circle-o',
+            icon: 'check-circle',
           },
           component: PageView,
           children: [
@@ -202,7 +202,7 @@ const options = {
           path: 'components',
           name: '内置组件',
           meta: {
-            icon: 'appstore-o'
+            icon: 'appstore'
           },
           component: PageView,
           children: [
@@ -233,14 +233,6 @@ const options = {
             }
           },
           component: () => import('@/pages/form/basic')
-        },
-        {
-          name: 'Ant Design Vue',
-          path: 'antdv',
-          meta: {
-            icon: 'ant-design',
-            link: 'https://www.antdv.com/docs/vue/introduce-cn/'
-          }
         },
         {
           name: '使用文档',

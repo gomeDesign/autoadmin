@@ -8,7 +8,7 @@ lang: zh-CN
 ## 安装
 克隆本项目到本地
 ```bash
-$ git clone https://github.com/iczer/vue-antd-admin.git
+$ git clone https://github.com/gomeDesign/autoadmin.git
 ```
 安装依赖
 ```bash
