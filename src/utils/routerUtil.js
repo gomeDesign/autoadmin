@@ -191,7 +191,6 @@ function formatAuthority(routes, pAuthorities = []) {
     const meta = route.meta
     const defaultAuthority = pAuthorities[pAuthorities.length - 1] || {permission: '*'}
     if (meta) {
-      console.log(route,'-----------------')
       let authority = {}
       if (!meta.authority) {
         authority = defaultAuthority

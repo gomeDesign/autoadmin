@@ -28,7 +28,7 @@ const options = {
       children: [
         {
           path: 'dashboard',
-          name: 'Dashboard',
+          name: '仪表盘',
           meta: {
             icon: 'dashboard',
             style:'color:#399CFF',

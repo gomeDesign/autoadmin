@@ -7,7 +7,7 @@
       </router-link>
       <a-divider v-if="isMobile" type="vertical" />
       <div v-if="layout !== 'side' && !isMobile" class="admin-header-menu" :style="`width: ${menuWidth};`">
-        <i-menu class="head-blue-menu" :theme="headerTheme" mode="horizontal" :options="menuData" @select="onSelect"/>
+        <i-menu class="head-blue-menu" :theme="headerTheme" mode="horizontal" :options="transMenuData" @select="onSelect"/>
       </div>
       <div :class="['admin-header-right', headerTheme]">
           <header-search class="header-item" @active="val => searchActive = val" />
@@ -50,6 +50,15 @@ export default {
         return 'light'
       }
       return this.theme.mode
+    },
+    transMenuData () {
+      let tempData = JSON.parse(JSON.stringify(this.menuData))
+      tempData.forEach((item) =>{
+        if (item.meta.icon) {
+          item.meta.icon = ''
+        }
+      })
+      return tempData;
     },
     langAlias() {
       let lang = this.langList.find(item => item.key == this.lang)
