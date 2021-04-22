@@ -8,7 +8,7 @@ module.exports = {
   themeConfig: {
     logo: '/logo.png',
     repo: 'gomeDesign/autoadmin',
-    docsDir: 'docs',
+    docsDir: 'docs/dist',
     editLinks: true,
     editLinkText: '在 Github 上帮助我们编辑此页',
     nav: [
