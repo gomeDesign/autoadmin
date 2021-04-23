@@ -207,12 +207,6 @@ function formatAuthority(routes, pAuthorities = []) {
         }
       }
       meta.authority = authority
-      route.meta = {
-        icon: meta.icon || route.icon ||  meta.meta?.icon || route.meta?.icon,
-        style: meta.style || route.style ||  meta.meta?.style || route.meta?.style,
-        page: meta.page || route.page ||  meta.meta?.page || route.meta?.page,
-        link: meta.link || route.link ||  meta.meta?.link || route.meta?.link
-      }
     } else {
       const authority = defaultAuthority
       route.meta = {authority}
