@@ -9,6 +9,7 @@ import {enquireScreen} from './utils/util'
 import {mapState, mapMutations} from 'vuex'
 import themeUtil from '@/utils/themeUtil';
 import {getI18nKey} from '@/utils/routerUtil'
+import Watermark from '@/utils/watermark'
 
 export default {
   name: 'App',
@@ -24,6 +25,7 @@ export default {
   },
   mounted() {
    this.setWeekModeTheme(this.weekMode)
+   Watermark.set('Karajan','yourEmail@gome.com.cn')
   },
   watch: {
     weekMode(val) {
